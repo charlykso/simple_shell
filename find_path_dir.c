@@ -3,6 +3,10 @@
 #include <string.h>
 #include "main.h"
 
+/** 
+ * Not complete
+ */
+
 char *fill_path_dir(char *path);
 list_t *find_path_dir(char *path);
 
