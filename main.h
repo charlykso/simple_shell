@@ -15,6 +15,7 @@ typedef struct list_s
 } list_t;
 
 int tokenize(char *s);
+void env_free(void);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
