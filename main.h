@@ -32,7 +32,7 @@ typedef struct alias_s
 
 alias_t *aliases;
 
-int tokenize(char *s);
+char *tokenize(char *s);
 void env_free(void);
 char **_getenv(const char *var);
 void free_args(char **args, char **first);
