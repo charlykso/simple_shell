@@ -49,7 +49,7 @@ int execute(char **args, char **first)
             execve(com, args, environ);
             if (errno == EACCES)
                 r = (create_error(args, 126));
-            free_env();
+            env_free();
             free_args(args, first);
             free_alias_list(aliases);
             _exit(r);
