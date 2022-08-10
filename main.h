@@ -42,6 +42,7 @@ void free_list(list_t *h);
 char *find_location(char *com);
 list_t *find_path_dir(char *path);
 char *fill_path_dir(char *path);
+int create_error(char **args, int err);
 char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);
@@ -52,5 +53,7 @@ char *error_127(char **args);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
+int num_len(int num);
+char *_itoa(int num);
 
 #endif
