@@ -3,10 +3,6 @@
 #include <string.h>
 #include "main.h"
 
-/** 
- * Not complete
- */
-
 char *fill_path_dir(char *path);
 list_t *find_path_dir(char *path);
 
@@ -118,19 +114,21 @@ return (c_path);
 */
 list_t *find_path_dir(char *path)
 {
-int index;
-char **dirs, *path_copy;
+int i;
+char **dirs, *c_path;
 list_t *head = NULL;
 
-path_copy = fill_path_dir(path);
-if (!path_copy)
+c_path = fill_path_dir(path);
+  
+if (!c_path)
 return (NULL);
-dirs = _strtok(path_copy, ":");
-free(path_copy);
+dirs = strtok(c_path, ":");
+free(c_path);
 if (!dirs)
 return (NULL);
 
-for (index = 0; dirs[index]; index++)
+i = 0;
+while (dirs[i])
 {
 if (add_node_end(&head, dirs[index]) == NULL)
 {
@@ -138,6 +136,7 @@ free_list(head);
 free(dirs);
 return (NULL);
 }
+i++;
 }
 
 free(dirs);
