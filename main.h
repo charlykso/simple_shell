@@ -34,6 +34,7 @@ alias_t *aliases;
 
 int tokenize(char *s);
 void env_free(void);
+char **_getenv(const char *var);
 void free_args(char **args, char **first);
 char *find_location(char *com);
 list_t *find_path_dir(char *path);
