@@ -51,6 +51,7 @@ char *error_2_syntax(char **args);
 char *error_126(char **args);
 char *error_127(char **args);
 int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, const char *src);
 char *_strncat(char *dest, const char *src, size_t n);
