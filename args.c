@@ -12,13 +12,12 @@
 void free_args(char **args, char **first)
 {
 	size_t i;
-  
-  i = 0;
-	while (args[i] || args[i + 1])
-  {
-		free(args[i]);
-    i++;
-  }
+	i = 0;
 
+	while (args[i] || args[i + 1])
+	{
+		free(args[i]);
+		i++;
+	}
 	free(first);
 }

@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
+#include <unistd.h>
+#include <errno.h>
+#include <sys/types.h>
 
 /**
 * execute - Executes a command in a child process.
@@ -57,7 +60,7 @@ int execute(char **args, char **first)
         else
         {
             wait(&stat);
-            ret = WEXITSTATUS(stat);
+            r = WEXITSTATUS(stat);
         }
     }
     

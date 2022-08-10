@@ -13,13 +13,13 @@ char **_getenv(const char *var);
 void env_free(void)
 {
 	int i;
-  
-  i = 0;
+  	i = 0;
+
 	while (environ[i])
-  {
+	{
 		free(environ[i]);
-    i++;
-  }
+		i++;
+	}
 	free(environ);
 }
 
