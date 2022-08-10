@@ -4,7 +4,7 @@
 #include "main.h"
 
 void free_alias_list(alias_t *h);
-list_t *add_node_end(list_t **h, char *d);
+list_t *add_node_end(list_t **h, char *dir);
 void free_list(list_t *h);
 
 /**
@@ -15,7 +15,7 @@ void free_list(list_t *h);
 *         else new node.
 */
 
-list_t *add_node_end(list_t **h, char *d)
+list_t *add_node_end(list_t **h, char *dir)
 {
 list_t *new_node = malloc(sizeof(list_t));
 list_t *last;
@@ -23,7 +23,7 @@ list_t *last;
 if (!new_node)
 return (NULL);
 
-new_node->d = d;
+new_node->dir = dir;
 new_node->next = NULL;
 
 if (*h)
