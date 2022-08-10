@@ -47,6 +47,8 @@ char *error_1(char **args);
 char *error_2_exit(char **args);
 char *error_2_cd(char **args);
 char *error_2_syntax(char **args);
+char *error_126(char **args);
+char *error_127(char **args);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
