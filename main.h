@@ -3,6 +3,8 @@
 
 extern char **environ;
 
+int history_count;
+
 /**
  * struct list_s - A new struct type defining a linked list.
  * @dir: A directory path.
