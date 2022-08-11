@@ -1,64 +1,105 @@
-#ifndef _MAIN_
-#define _MAIN_
+#ifndef __MAIN_H
+#define __MAIN_H
 
-extern char **environ;
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include "history.h"
+#include "shellvars.h"
+/*#include <string.h>*/
 
-int history_count;
+/* from in.c */
+int shintmode(void);
 
-/**
- * struct list_s - A new struct type defining a linked list.
- * @dir: A directory path.
- * @next: A pointer to another struct list_s.
- */
+/* from _printenv.c */
+int _printenv(void);
 
-typedef struct list_s
-{
-  char *dir;
-  struct list_s *next;
-} list_t;
+/* from cmdcall.c */
+int builtincall(char *av[]);
+int cmdcall(char *av[], char *path);
 
-/**
- * struct alias_s - A new struct for aliases.
- * @name: The name of the alias.
- * @value: The value of the alias.
- * @next: A pointer to another struct alias_s.
- */
+/* from parser.c */
+int parseargs(char **buf);
 
-typedef struct alias_s
-{
-  char *name;
-  char *value;
-  struct alias_s *next;
-} alias_t;
+/* from errhandl.c */
+int errhandl(int status);
 
-
-alias_t *aliases;
-
-char *tokenize(char *s);
-void env_free(void);
-char **_getenv(const char *var);
-void free_args(char **args, char **first);
-void free_alias_list(alias_t *h);
-list_t *add_node_end(list_t **h, char *dir);
-void free_list(list_t *h);
-char *find_location(char *com);
-list_t *find_path_dir(char *path);
-char *fill_path_dir(char *path);
-int create_error(char **args, int err);
-char *error_env(char **args);
-char *error_1(char **args);
-char *error_2_exit(char **args);
-char *error_2_cd(char **args);
-char *error_2_syntax(char **args);
-char *error_126(char **args);
-char *error_127(char **args);
-int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
+/* from string.c */
+size_t _strlen(char *str);
 char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
-char *_strncat(char *dest, const char *src, size_t n);
-int _strlen(char *s);
-int num_len(int num);
-char *_itoa(int num);
+int _strcmp(char *, char *);
+char *_strdup(char *str);
+char *_strcat(char *a, char *b);
+
+/* from _getenv.c and getenviron.c */
+char ***getenviron(void);
+int setallenv(char **environ, char *add);
+char *_getenv(char *avzero);
+int _setenv(char *name, char *val);
+int _unsetenv(char *name);
+char **getallenv(void);
+
+void print_alphabet(void);
+
+/* from utility.c */
+char *itos(int digits);
+char *_strchr(char *s, char c);
+int fprintstrs(int fd, char *str, ...);
+int printerr(char *);
+int linecount(int);
+
+/* from cd.c */
+int _cd(char *av[]);
+
+/* from alias.c */
+int aliascmd(char **av);
+char *getalias(char *name);
+int unsetalias(char *name);
+
+/* from shellvars.c */
+int initsvars(int ac, char **av);
+char *getsvar(char *name);
+int setsvar(char *name, char *val);
+int unsetsvar(char *name);
+ShellVar **getspecial(void);
+ShellVar **getvars(void);
+
+/* from _realloc.c */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
+/* from _strtok.c */
+char *strtok(char *str, char *delim);
+
+/* from _getline.c */
+int _getline(char **lineptr, int fd);
+
+char *strtokqe(char *str, char *delim, int escflags);
+
+/*from history.c*/
+int sethist(char *cmd);
+int print_hist(void);
+int exit_hist(void);
+
+
+/* from _printenv.c */
+int _printenv(void);
+int _putchar(char c);
+
+
+
+/*from help.c*/
+int help(char *cmd);
+
+/* from exitcleanup.c */
+void exitcleanup(char **av);
+
+/* from _atoi*/
+int _atoi(char *s);
+
+char *_getpid(void);
 
 #endif
