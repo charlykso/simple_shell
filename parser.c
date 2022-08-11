@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * parsesetsvar - parse set shell vars, returns new buf after var setting
  * @buf: buffer

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 #include "shellvars.h"
 /**
  * initsvars - initialize vars
