@@ -22,7 +22,6 @@ char *error_env(char **args)
 	hist_str = _itoa(history_count);
 	if (!hist_str)
 		return (NULL);
-
 	args--;
 	len = _strlen(shell) + _strlen(hist_str) + _strlen(args[0]) + 45;
 	error = malloc(sizeof(char) * (len + 1));
